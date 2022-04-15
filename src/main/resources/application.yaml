@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    username: root
+    password: theday1012
+    url: jdbc:mysql://localhost:3306/dang?serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  type-aliases-package: dangserver.pojo
+  mapper-locations: classpath:mybatis/mapper/*.xml
