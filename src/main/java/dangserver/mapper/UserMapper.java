@@ -12,4 +12,7 @@ public interface UserMapper {
 
     // 由tel获得user所有信息
     User getUser(String tel);
+
+    // 返回所有
+    User[] getAll();
 }

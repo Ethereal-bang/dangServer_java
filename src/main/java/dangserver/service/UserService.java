@@ -8,4 +8,6 @@ public interface UserService {
 
     User getUser(String tel);
 
+    User[] showAll();
+
 }

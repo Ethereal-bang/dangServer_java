@@ -13,4 +13,8 @@
         select * from dang.user where tel = #{tel}
     </select>
 
+    <select id="getAll" resultType="User">
+        select * from user;
+    </select>
+
 </mapper>
