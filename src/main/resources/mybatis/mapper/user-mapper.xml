@@ -17,4 +17,8 @@
         select * from user;
     </select>
 
+    <insert id="addOne" parameterType="User">
+        insert into user (tel, password) values (#{tel}, #{password})
+    </insert>
+
 </mapper>

@@ -8,9 +8,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
-    private String tel, password, name, email, address;
-    private String[] shoppingCart;
+    private String tel, password, address;
 
-
-
+    public User(String tel, String pwd) {
+        this.tel = tel;
+        password = pwd;
+    }
 }

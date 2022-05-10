@@ -10,4 +10,6 @@ public interface UserService {
 
     User[] showAll();
 
+    User register(User user);
+
 }

@@ -26,4 +26,14 @@ public class UserServiceImpl implements UserService {
     public User[] showAll() {
         return userMapper.getAll();
     }
+
+    @Override
+    public User register(User user) {
+        // 1.判断是否已存在
+        if (userMapper.isExists(user.getTel()) == 1) {
+
+        };
+        userMapper.addOne(user);
+        return userMapper.getUser(user.getTel());
+    }
 }

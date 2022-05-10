@@ -15,4 +15,7 @@ public interface UserMapper {
 
     // 返回所有
     User[] getAll();
+
+    // 新增行
+    int addOne(User user);
 }

@@ -32,6 +32,16 @@ public class UserController {
         return new JSONResult<User>(userService.getUser(tel));
     }
 
+    @RequestMapping("/register")
+    public JSONResult register(@RequestParam String tel, @RequestParam String password) {
+        if (userService.isExists(tel)) {
+            return new JSONResult<String>(false, "用户已存在");
+        }
+        JSONResult<User> res = new JSONResult<>(userService.register(new User(tel, password)));
+        res.setMsg("注册成功");
+        return res;
+    }
+
     @RequestMapping("/login")
     public JSONResult login(@RequestParam("tel") String tel, @RequestParam("pwd") String pwd) {
         if (!userService.isExists(tel)) {
