@@ -14,8 +14,12 @@ import java.util.Objects;
 @RestController
 @RequestMapping("/users")
 public class UserController {
-    @Autowired
     UserService userService;
+
+    @Autowired
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
 
     @RequestMapping("/")
     public String user() {
@@ -29,7 +33,7 @@ public class UserController {
 
     @RequestMapping("/getUser/{tel}")
     public JSONResult<User> getUser(@PathVariable String tel) {
-        return new JSONResult<User>(userService.getUser(tel));
+        return new JSONResult<>(userService.getUser(tel));
     }
 
     @RequestMapping("/register")

@@ -7,10 +7,12 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements UserService {
-    @Autowired
     private UserMapper userMapper;
 
-    public void setUserMapper(UserMapper userMapper) {}
+    @Autowired
+    public void setUserMapper(UserMapper userMapper) {
+        this.userMapper = userMapper;
+    }
 
     @Override
     public boolean isExists(String tel) {
@@ -29,10 +31,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User register(User user) {
-        // 1.判断是否已存在
-        if (userMapper.isExists(user.getTel()) == 1) {
-
-        };
         userMapper.addOne(user);
         return userMapper.getUser(user.getTel());
     }
