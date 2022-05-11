@@ -32,31 +32,30 @@ public class UserController {
     }
 
     @RequestMapping("/getUser/{tel}")
-    public JSONResult<User> getUser(@PathVariable String tel) {
-        return new JSONResult<>(userService.getUser(tel));
+    public JSONResult getUser(@PathVariable String tel) {
+        return JSONResult.ok().data("data", userService.getUser(tel));
     }
 
     @RequestMapping("/register")
     public JSONResult register(@RequestParam String tel, @RequestParam String password) {
         if (userService.isExists(tel)) {
-            return new JSONResult<String>(false, "用户已存在");
+            return JSONResult.err().setMsg("用户已存在");
         }
-        JSONResult<User> res = new JSONResult<>(userService.register(new User(tel, password)));
-        res.setMsg("注册成功");
-        return res;
+        return JSONResult
+                .ok()
+                .data("user", userService.register(new User(tel, password)))
+                .setMsg("注册成功");
     }
 
     @RequestMapping("/login")
     public JSONResult login(@RequestParam("tel") String tel, @RequestParam("pwd") String pwd) {
         if (!userService.isExists(tel)) {
-            return new JSONResult<String>(false, "用户不存在");
+            return JSONResult.err().setMsg("用户不存在");
         } else {
             if (Objects.equals(userService.getUser(tel).getPassword(), pwd)) {
-                JSONResult<Boolean> res = new JSONResult<>(true);
-                res.setMsg("登录成功");
-                return res;
+                return JSONResult.ok().setMsg("登录成功");
             } else {
-                return new JSONResult<String>(false, "密码错误");
+                return JSONResult.err().setMsg("密码错误");
             }
         }
     }

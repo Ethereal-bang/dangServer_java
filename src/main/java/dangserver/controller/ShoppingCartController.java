@@ -37,13 +37,3 @@ public class ShoppingCartController {
 //    }
 
 }
-
-class ShoppingCartGoods {
-    private String name;
-    private int num;
-
-    public ShoppingCartGoods(String name, int num) {
-        this.name = name;
-        this.num = num;
-    }
-}
