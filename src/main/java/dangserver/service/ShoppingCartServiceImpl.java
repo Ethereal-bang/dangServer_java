@@ -23,4 +23,9 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         }
         return true;
     }
+
+    @Override
+    public int[] getGoodsIdList(String tel) {
+        return shoppingCartMapper.getGoodsIdList(tel);
+    }
 }

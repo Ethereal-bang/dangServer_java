@@ -9,4 +9,8 @@
         insert into shoppingcart (tel, goodsId) values (#{tel}, #{id})
     </insert>
 
+    <select id="getGoodsIdList" parameterType="String" resultType="int">
+        select goodsId from shoppingcart where tel = #{tel};
+    </select>
+
 </mapper>
