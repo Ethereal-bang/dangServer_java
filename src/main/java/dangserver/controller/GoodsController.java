@@ -33,8 +33,8 @@ public class GoodsController {
                 .data("count", res.length);
     }
 
-    @RequestMapping("/getByType")
-    public JSONResult getByType(@RequestParam String type) {
+    @RequestMapping("/getByType/{type}")
+    public JSONResult getByType(@PathVariable String type) {
         Goods[] res = goodsService.getByField("type", type);
         return JSONResult
                 .ok()
