@@ -16,8 +16,6 @@ public class JSONResult {
 
     private Map<String, Object> data = new HashMap<>();
 
-    private Object singleData;
-
     private JSONResult() {}
 
     // 请求成功
@@ -25,14 +23,6 @@ public class JSONResult {
         JSONResult jsonResult = new JSONResult();
         jsonResult.setFlag(true);
         jsonResult.setMsg("查询成功");
-        return jsonResult;
-    }
-
-    public static JSONResult ok(Object singleData) {
-        JSONResult jsonResult = new JSONResult();
-        jsonResult.setFlag(true);
-        jsonResult.setMsg("查询成功");
-        jsonResult.setSingleData(singleData);
         return jsonResult;
     }
 

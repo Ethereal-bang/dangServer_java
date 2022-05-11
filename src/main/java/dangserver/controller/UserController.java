@@ -33,26 +33,29 @@ public class UserController {
 
     @RequestMapping("/getUser/{tel}")
     public JSONResult getUser(@PathVariable String tel) {
-        return JSONResult.ok(userService.getUser(tel));
+        return JSONResult.ok().data("user", userService.getUser(tel));
     }
 
     @RequestMapping("/register")
     public JSONResult register(@RequestParam String tel, @RequestParam String password) {
+        User res = userService.register(new User(tel, password));
         if (userService.isExists(tel)) {
             return JSONResult.err().setMsg("用户已存在");
         }
         return JSONResult
-                .ok(userService.register(new User(tel, password)))
-                .setMsg("注册成功");
+                .ok()
+                .setMsg("注册成功")
+                .data("user", res);
     }
 
     @RequestMapping("/login")
     public JSONResult login(@RequestParam("tel") String tel, @RequestParam("pwd") String pwd) {
+        User res = userService.getUser(tel);
         if (!userService.isExists(tel)) {
             return JSONResult.err().setMsg("用户不存在");
         } else {
-            if (Objects.equals(userService.getUser(tel).getPassword(), pwd)) {
-                return JSONResult.ok(true).setMsg("登录成功");
+            if (Objects.equals(res.getPassword(), pwd)) {
+                return JSONResult.ok().setMsg("登录成功").data("user", res);
             } else {
                 return JSONResult.err().setMsg("密码错误");
             }

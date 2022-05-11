@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("goods")
+@RequestMapping("/goods")
 public class GoodsController {
     GoodsService goodsService;
 
@@ -19,7 +19,7 @@ public class GoodsController {
         this.goodsService = goodsService;
     }
 
-    @RequestMapping("/")
+    @RequestMapping("")
     public String goods() {
         return "Goods";
     }
@@ -46,7 +46,16 @@ public class GoodsController {
     public JSONResult getById(@PathVariable int id) {
         Goods[] res = goodsService.getByField("id", id);
         return JSONResult
-                .ok(res)
-                .setMsg("查询成功：" + id);
+                .ok()
+                .setMsg("查询成功：" + id)
+                .data("goods", res);
+    }
+
+    @RequestMapping("/search")
+    public JSONResult search(@RequestParam String name ) {
+        return JSONResult
+        .ok()
+        .setMsg("查询成功：" + name)
+        .data("list", goodsService.searchByName(name));
     }
 }
