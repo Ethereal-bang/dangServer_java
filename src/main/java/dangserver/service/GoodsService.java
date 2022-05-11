@@ -6,5 +6,5 @@ public interface GoodsService {
 
     Goods[] showAll();
 
-    int getCount();
+    Goods[] getByField(String fieldName, Object fieldVal);
 }

@@ -13,4 +13,8 @@
         select COUNT(*) from goods;
     </select>
 
+    <select id="getByType" parameterType="String" resultType="Goods">
+        select * from goods where type = #{type}
+    </select>
+
 </mapper>

@@ -5,6 +5,7 @@ import dangserver.pojo.Goods;
 import dangserver.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -24,10 +25,20 @@ public class GoodsController {
 
     @RequestMapping("/showAll")
     public JSONResult showAll() {
+        Goods[] res = goodsService.showAll();
         return JSONResult
                 .ok()
-                .data("list", goodsService.showAll())
-                .data("count", goodsService.getCount());
+                .data("list", res)
+                .data("count", res.length);
+    }
+
+    @RequestMapping("/getByType")
+    public JSONResult getByType(@RequestParam String type) {
+        Goods[] res = goodsService.getByField("type", type);
+        return JSONResult
+                .ok()
+                .data("count", res.length)
+                .data("list", res);
     }
 
 }

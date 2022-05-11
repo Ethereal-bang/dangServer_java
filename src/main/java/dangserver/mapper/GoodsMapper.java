@@ -10,4 +10,6 @@ public interface GoodsMapper {
     Goods[] getAll();
 
     int getCount();
+
+    Goods[] getByType(Object type); // Object只是为了和Service对应
 }
