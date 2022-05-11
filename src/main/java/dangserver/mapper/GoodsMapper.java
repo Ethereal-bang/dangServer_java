@@ -9,9 +9,9 @@ import org.springframework.stereotype.Repository;
 public interface GoodsMapper {
     Goods[] getAll();
 
-    int getCount();
-
     Goods[] getByType(Object type); // Object只是为了和Service对应
 
     Goods[] getById(Object id);
+
+    Goods[] searchByName(String name);
 }
