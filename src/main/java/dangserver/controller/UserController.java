@@ -33,7 +33,7 @@ public class UserController {
 
     @RequestMapping("/getUser/{tel}")
     public JSONResult getUser(@PathVariable String tel) {
-        return JSONResult.ok().data("data", userService.getUser(tel));
+        return JSONResult.ok(userService.getUser(tel));
     }
 
     @RequestMapping("/register")
@@ -42,8 +42,7 @@ public class UserController {
             return JSONResult.err().setMsg("用户已存在");
         }
         return JSONResult
-                .ok()
-                .data("user", userService.register(new User(tel, password)))
+                .ok(userService.register(new User(tel, password)))
                 .setMsg("注册成功");
     }
 
@@ -53,7 +52,7 @@ public class UserController {
             return JSONResult.err().setMsg("用户不存在");
         } else {
             if (Objects.equals(userService.getUser(tel).getPassword(), pwd)) {
-                return JSONResult.ok().setMsg("登录成功");
+                return JSONResult.ok(true).setMsg("登录成功");
             } else {
                 return JSONResult.err().setMsg("密码错误");
             }

@@ -23,12 +23,18 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Override
     public Goods[] getByField(String filedName, Object fieldVal) {
-        if (Objects.equals(filedName, "type")) {
-            return goodsMapper.getByType(fieldVal);
+        switch (filedName) {
+            case "type":
+                return goodsMapper.getByType(fieldVal);
+            case "id":
+                return goodsMapper.getById(fieldVal);
+            default:
+                throw new IllegalStateException("Unexpected value: " + filedName);
         }
-
-        return goodsMapper.getAll();
     }
+
+//    @Override
+//
 }
 
 

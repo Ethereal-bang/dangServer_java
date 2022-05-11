@@ -4,6 +4,7 @@ import dangserver.common.JSONResult;
 import dangserver.pojo.Goods;
 import dangserver.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,4 +42,11 @@ public class GoodsController {
                 .data("list", res);
     }
 
+    @RequestMapping("/getById/{id}")
+    public JSONResult getById(@PathVariable int id) {
+        Goods[] res = goodsService.getByField("id", id);
+        return JSONResult
+                .ok(res)
+                .setMsg("查询成功：" + id);
+    }
 }

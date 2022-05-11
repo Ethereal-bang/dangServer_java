@@ -17,4 +17,8 @@
         select * from goods where type = #{type}
     </select>
 
+    <select id="getById" parameterType="int" resultType="Goods">
+        select * from goods where id = #{id}
+    </select>
+
 </mapper>

@@ -14,7 +14,9 @@ public class JSONResult {
 
     private String msg;
 
-    private Map<String, Object> data = new HashMap<String, Object>();
+    private Map<String, Object> data = new HashMap<>();
+
+    private Object singleData;
 
     private JSONResult() {}
 
@@ -26,6 +28,14 @@ public class JSONResult {
         return jsonResult;
     }
 
+    public static JSONResult ok(Object singleData) {
+        JSONResult jsonResult = new JSONResult();
+        jsonResult.setFlag(true);
+        jsonResult.setMsg("查询成功");
+        jsonResult.setSingleData(singleData);
+        return jsonResult;
+    }
+
     // 请求失败
     public static JSONResult err() {
         JSONResult jsonResult = new JSONResult();
@@ -34,7 +44,7 @@ public class JSONResult {
         return jsonResult;
     }
 
-    // 成功并返回数据
+    // 成功并返回数据(key-value)
     public JSONResult data(String key, Object val) {
         this.data.put(key, val);
         return this;

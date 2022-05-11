@@ -12,4 +12,6 @@ public interface GoodsMapper {
     int getCount();
 
     Goods[] getByType(Object type); // Object只是为了和Service对应
+
+    Goods[] getById(Object id);
 }
