@@ -1,7 +1,6 @@
 package dangserver.service;
 
 import dangserver.mapper.ShoppingCartMapper;
-import dangserver.pojo.ShoppingCart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +15,12 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     }
 
     @Override
-    public void addGoods(ShoppingCart shoppingCart) {
-        shoppingCartMapper.add(shoppingCart);
+    public boolean addOneGoods(String tel, int goodsId, int num) {
+        for (int i = 0; i < num; i++) {
+            if (1 != shoppingCartMapper.addOne(tel, goodsId)) {
+                return false;
+            }
+        }
+        return true;
     }
 }

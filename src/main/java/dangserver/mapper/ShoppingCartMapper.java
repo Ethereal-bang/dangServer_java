@@ -5,5 +5,5 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface ShoppingCartMapper {
-    int add(ShoppingCart shoppingCart);
+    int addOne(String tel, int id);
 }

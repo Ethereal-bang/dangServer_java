@@ -1,9 +1,7 @@
 package dangserver.service;
 
-import dangserver.pojo.ShoppingCart;
-
 public interface ShoppingCartService {
 
-    void addGoods(ShoppingCart shoppingCart);
+    boolean addOneGoods(String tel, int id, int num);
 
 }

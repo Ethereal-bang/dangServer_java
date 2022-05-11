@@ -6,7 +6,7 @@
 <mapper namespace="dangserver.mapper.ShoppingCartMapper">
 
     <insert id="addOne" parameterType="ShoppingCart">
-        insert into shoppingcart (tel, goodsId) values (#{tel}, #{goodsId})
+        insert into shoppingcart (tel, goodsId) values (#{tel}, #{id})
     </insert>
 
 </mapper>
