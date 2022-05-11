@@ -7,16 +7,22 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class GoodsServiceImpl implements GoodsService {
-    @Autowired
     private GoodsMapper goodsMapper;
 
+    @Autowired
     public void setGoodsMapper(GoodsMapper userMapper) {
         this.goodsMapper = userMapper;
     }
 
     @Override
-    public Goods showAll() {
+    public Goods[] showAll() {
         return goodsMapper.getAll();
     }
 
+    @Override
+    public int getCount() {
+        return goodsMapper.getCount();
+    }
 }
+
+

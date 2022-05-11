@@ -7,5 +7,7 @@ import org.springframework.stereotype.Repository;
 @Mapper
 @Repository
 public interface GoodsMapper {
-    Goods getAll();
+    Goods[] getAll();
+
+    int getCount();
 }

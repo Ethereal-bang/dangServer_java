@@ -4,5 +4,7 @@ import dangserver.pojo.Goods;
 
 public interface GoodsService {
 
-    Goods showAll();
+    Goods[] showAll();
+
+    int getCount();
 }
