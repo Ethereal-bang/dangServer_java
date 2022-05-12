@@ -11,8 +11,8 @@ public class Goods {
 
     private int _id, comments, ranking;
 
-    private String name, img, price_now, price_old,
-            type, genre, description, author, process;
+    private String name, img, type, genre, description, author, process;
 
+    private float price_now, price_old;
 //    private String[] img;
 }

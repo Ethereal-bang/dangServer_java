@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 @RestController
 @RequestMapping("/shoppingCart")
@@ -45,7 +46,7 @@ public class ShoppingCartController {
     public JSONResult addGoods(@PathVariable String tel, @RequestParam int id, @RequestParam int num) {
         // 1.Add to shopping cart
         if (shoppingCartService.addOneGoods(tel, id, num)) {
-            // 2.Search goods by id
+            // 3.Search goods by id
             return JSONResult
                     .ok()
                     .data("name", goodsService.getByField("id", id)[0].getName()) // search

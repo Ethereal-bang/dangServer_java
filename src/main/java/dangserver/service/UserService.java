@@ -12,4 +12,6 @@ public interface UserService {
 
     User register(User user);
 
+    void updateCartInfo(int count, float price, String tel);
+
 }

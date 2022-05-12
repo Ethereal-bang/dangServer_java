@@ -2,6 +2,7 @@ package dangserver.service;
 
 import dangserver.mapper.UserMapper;
 import dangserver.pojo.User;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,5 +34,10 @@ public class UserServiceImpl implements UserService {
     public User register(User user) {
         userMapper.addOne(user);
         return userMapper.getUser(user.getTel());
+    }
+
+    @Override
+    public void updateCartInfo(int count, float price, String tel) {
+        userMapper.updateCartInfo(new User(count, price, tel));
     }
 }

@@ -21,4 +21,10 @@
         insert into user (tel, password, shoppingCartId) values (#{tel}, #{password}, #{shoppingCartId})
     </insert>
 
+    <update id="updateCartInfo" parameterType="User">
+        update user
+            set cart_count = cart_count + #{cart_count},
+                cart_price = cart_price + #{cart_price}
+            where tel = #{tel};
+    </update>
 </mapper>

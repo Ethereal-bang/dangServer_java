@@ -17,5 +17,7 @@ public interface UserMapper {
     User[] getAll();
 
     // 新增行
-    int addOne(User user);
+    void addOne(User user);
+
+    void updateCartInfo(User user);
 }
