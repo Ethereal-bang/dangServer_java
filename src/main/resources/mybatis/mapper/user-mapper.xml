@@ -18,7 +18,7 @@
     </select>
 
     <insert id="addOne" parameterType="User">
-        insert into user (tel, password) values (#{tel}, #{password})
+        insert into user (tel, password, shoppingCartId) values (#{tel}, #{password}, #{shoppingCartId})
     </insert>
 
 </mapper>

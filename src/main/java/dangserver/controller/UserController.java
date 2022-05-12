@@ -38,10 +38,10 @@ public class UserController {
 
     @RequestMapping("/register")
     public JSONResult register(@RequestParam String tel, @RequestParam String password) {
-        User res = userService.register(new User(tel, password));
         if (userService.isExists(tel)) {
             return JSONResult.err().setMsg("用户已存在");
         }
+        User res = userService.register(new User(tel, password));
         return JSONResult
                 .ok()
                 .setMsg("注册成功")
@@ -49,8 +49,9 @@ public class UserController {
     }
 
     @RequestMapping("/login")
-    public JSONResult login(@RequestParam("tel") String tel, @RequestParam("pwd") String pwd) {
+    public JSONResult login(@RequestParam("tel") String tel, @RequestParam("password") String pwd) {
         User res = userService.getUser(tel);
+
         if (!userService.isExists(tel)) {
             return JSONResult.err().setMsg("用户不存在");
         } else {
