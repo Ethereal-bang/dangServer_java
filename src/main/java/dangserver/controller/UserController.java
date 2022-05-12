@@ -51,6 +51,7 @@ public class UserController {
     @RequestMapping("/login")
     public JSONResult login(@RequestParam("tel") String tel, @RequestParam("password") String pwd) {
         User res = userService.getUser(tel);
+        res.setShoppingCartId(Integer.parseInt(tel));
 
         if (!userService.isExists(tel)) {
             return JSONResult.err().setMsg("用户不存在");
