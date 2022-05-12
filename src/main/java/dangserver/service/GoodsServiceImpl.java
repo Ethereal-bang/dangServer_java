@@ -38,10 +38,10 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Override
     public Goods[] searchByName(String name) {
-        if (!Pattern.matches("/[\\u4e00-\\u9fa5\\w]/", name)) {
-            return new Goods[]{};
+        if (Pattern.matches("/[\\u4e00-\\u9fa5\\w]/g", name)) {
+            return goodsMapper.searchByName(name);
         }
-        return goodsMapper.searchByName(name);
+        return new Goods[]{};
     }
 }
 
