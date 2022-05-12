@@ -5,6 +5,7 @@ import dangserver.pojo.Goods;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 @Service
@@ -25,6 +26,8 @@ public class GoodsServiceImpl implements GoodsService {
     public Goods[] getByField(String filedName, Object fieldVal) {
         switch (filedName) {
             case "type":
+                if (Objects.equals(fieldVal, "bookRanking"))
+                    return goodsMapper.getRanking();
                 return goodsMapper.getByType(fieldVal);
             case "id":
                 return goodsMapper.getById(fieldVal);

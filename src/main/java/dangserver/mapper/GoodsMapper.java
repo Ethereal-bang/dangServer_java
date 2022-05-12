@@ -14,4 +14,6 @@ public interface GoodsMapper {
     Goods[] getById(Object id);
 
     Goods[] searchByName(String name);
+
+    Goods[] getRanking();
 }

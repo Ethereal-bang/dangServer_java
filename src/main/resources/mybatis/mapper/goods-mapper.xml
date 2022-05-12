@@ -5,6 +5,11 @@
 
 <mapper namespace="dangserver.mapper.GoodsMapper">
 
+<!--    <resultMap id="map" type="Goods">-->
+<!--        <id property="id" column="id" />-->
+<!--        <result property="img" column="img" typeHandler="dangserver.common.ArrayTypeHandler" />-->
+<!--    </resultMap>-->
+
     <select id="getAll" resultType="Goods">
         select * from goods;
     </select>
@@ -14,10 +19,14 @@
     </select>
 
     <select id="getById" parameterType="int" resultType="Goods">
-        select * from goods where id = #{id}
+        select * from goods where _id = #{id}
     </select>
 
     <select id="searchByName" parameterType="String" resultType="Goods">
         select * from goods where name LIKE CONCAT('%', #{name}, '%');
+    </select>
+
+    <select id="getRanking" resultType="Goods">
+        select * from goods where type = 'bookRanking' order by ranking;
     </select>
 </mapper>
