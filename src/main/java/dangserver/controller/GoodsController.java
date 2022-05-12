@@ -33,6 +33,7 @@ public class GoodsController {
                 .data("count", res.length);
     }
 
+
     @RequestMapping("/getByType/{type}")
     public JSONResult getByType(@PathVariable String type) {
         Goods[] res = goodsService.getByField("type", type);
@@ -44,7 +45,7 @@ public class GoodsController {
 
     @RequestMapping("/getById/{id}")
     public JSONResult getById(@PathVariable int id) {
-        Goods[] res = goodsService.getByField("id", id);
+        Goods res = goodsService.getByField("id", id)[0];
         return JSONResult
                 .ok()
                 .setMsg("查询成功：" + id)
